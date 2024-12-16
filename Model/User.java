@@ -6,7 +6,7 @@ public class User {
   private int height;
   private float weight;
 
-  public User(String name, int age, int height, int weight){
+  public User(String name, int age, int height, float weight){
     this.name = name;
     this.age = age;
     this.height = height;

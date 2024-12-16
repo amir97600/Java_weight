@@ -3,19 +3,19 @@ import java.io.*;
 import Model.User;
 import Model.Users;
 
+
 public class Fonctions {
   
-    public static void Menu()
+    public  void Menu()
     {
         System.out.println("Bienvenue menu :\n");
         System.out.println("0 - pour quitter\n");
         System.out.println("1 - créer un utilisateur :\n");
         System.out.println("2 - choisir un utilisateur :\n");
         System.out.println("3 - supprimer un utilisateur :\n");
-        System.out.println("4 - modifier un utilisateur :\n");
     }
 
-    public static void userMenu(String name){
+    public  void userMenu(String name){
         System.out.println("Bienvenue "+name+" :\n");
         System.out.println("0 - pour revenir en arrière\n");
         System.out.println("1 - modifier le nom :\n");
@@ -29,24 +29,46 @@ public class Fonctions {
         System.out.println("9 - Suivre la progression du poids :\n");
     }
 
-    public static void modifyName(String name, User user){
+    public void createUser(Users users){
+        System.out.println("Entrez le nom : ");
+        String name = saisirChaine();
+
+        if(users.getUser(name)==null){
+
+            System.out.println("Entrez l'âge : ");
+            int age = saisirEntier();
+            System.out.println("Entrez la taille : ");
+            int height = saisirEntier();
+            System.out.println("Entrez le poids : ");
+            float weight = saisirDecimal();
+
+            User user = new User(name, age, height, weight);
+            users.addUser(user);
+        }
+        else{
+            System.err.println("Cet utilisateur existe déjà");
+        }
+        
+    }
+
+    public  void modifyName(String name, User user){
       user.setName(name);
     }
 
-    public static void modifyAge(int age, User user){
+    public  void modifyAge(int age, User user){
       user.setAge(age);
     }
 
-    public static void modifyHeight(int height, User user){
+    public  void modifyHeight(int height, User user){
       user.setHeigth(height);
     }
 
-    public static void modifyWeight(float weight, User user){
+    public  void modifyWeight(float weight, User user){
       user.setWeight(weight);
     }
 
 
-    public static int saisirEntier()
+    public  int saisirEntier()
     {
         try{
             BufferedReader buff = new BufferedReader 
@@ -61,8 +83,24 @@ public class Fonctions {
             return 0;
         }
     }
+
+    public  float saisirDecimal()
+    {
+        try{
+            BufferedReader buff = new BufferedReader 
+            (new InputStreamReader(System.in));
+            String chaine=buff.readLine();
+            float num = Float.parseFloat(chaine);
+            return num;
+        }
+        catch(IOException e)
+        {
+            System.out.println("impossible de travailler : " + e);
+            return 0;
+        }
+    }
     
-    public static String saisirChaine()
+    public  String saisirChaine()
     {
         try{
             BufferedReader buff = new BufferedReader 
