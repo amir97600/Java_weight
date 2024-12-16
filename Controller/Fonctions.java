@@ -8,7 +8,7 @@ public class Fonctions {
   
     public  void Menu()
     {
-        System.out.println("Bienvenue menu :\n");
+        System.out.println("Bienvenue :\n");
         System.out.println("0 - pour quitter\n");
         System.out.println("1 - créer un utilisateur :\n");
         System.out.println("2 - choisir un utilisateur :\n");
@@ -46,9 +46,33 @@ public class Fonctions {
             users.addUser(user);
         }
         else{
-            System.err.println("Cet utilisateur existe déjà");
+            System.out.println("Cet utilisateur existe déjà!");
         }
         
+    }
+
+    public void displayUsers(Users users){
+        if(!users.getUserList().isEmpty()){
+            System.out.println("Voici les différents utilisateurs : \n");
+            int count = 1;
+            for(User user : users.getUserList()){
+                if(count == users.getUserList().size()){
+                    System.out.println(Integer.toString(count)+"\tNom : "+user.getName()+" age : "+user.getAge()+" taille : "+user.getHeight()+" poids "+user.getWeight()+".\n");
+                }
+                else{
+                    System.out.println(Integer.toString(count)+"\tNom : "+user.getName()+" age : "+user.getAge()+" taille : "+user.getHeight()+" poids "+user.getWeight()+".");
+                }
+                count++;
+            }
+        }
+        else{
+            System.out.println("Créez d'abord un utilisateur! \n");
+        }
+        
+    }
+
+    public void chooseUsers(){
+
     }
 
     public  void modifyName(String name, User user){

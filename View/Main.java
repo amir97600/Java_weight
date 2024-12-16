@@ -21,6 +21,10 @@ public class Main {
           running = false;
           break;
         case 1:
+          fonctions.createUser(users);
+          break;
+        case 2:
+          fonctions.displayUsers(users);
           break;
         default:
           break;

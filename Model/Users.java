@@ -25,9 +25,6 @@ public User getUser(String name){
       }
     }
   }
-  else{
-    System.out.println(" Créez d'abord un utilisateur.");
-  }
   
   return null;
 }
